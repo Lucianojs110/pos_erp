@@ -1,0 +1,12 @@
+{
+    "name": "Afip",
+    "alias": "afip",
+    "description": "",
+    "active": true,
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Afip\\Providers\\AfipServiceProvider"
+    ],
+    "files": []
+}
