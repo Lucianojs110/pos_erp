@@ -995,14 +995,7 @@ class TransactionUtil extends Util
 
         //Display name
         $output['display_name'] = $location_details->name;
-        //$output['razon_social'] = '$location_details->razon_social';
-        if (!empty($output['location_name'])) {
-            if (!empty($output['display_name'])) {
-                $output['display_name'] .= ', ';
-            }
-            $output['display_name'] .= $output['location_name'];
-        }
-
+     
         //Logo
         $output['logo'] = $il->show_logo != 0 && !empty($il->logo) && file_exists(public_path('uploads/invoice_logos/' . $il->logo)) ? asset('uploads/invoice_logos/' . $il->logo) : false;
 
