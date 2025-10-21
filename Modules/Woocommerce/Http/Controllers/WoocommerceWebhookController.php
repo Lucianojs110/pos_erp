@@ -266,17 +266,12 @@ class WoocommerceWebhookController extends Controller
         }
     }
 
-    private function isValidWebhookRequest($request, $secret)
-    {
-        $signature = $request->header('x-wc-webhook-signature');
+     private function isValidWebhookRequest($request, $secret)
+{
+    $signature = $request->header('X-WC-Webhook-Signature');
+    $payload = $request->getContent();
+    $calculated_hmac = base64_encode(hash_hmac('sha256', $payload, $secret, true));
 
-        $payload = $request->getContent();
-        $calculated_hmac = base64_encode(hash_hmac('sha256', $payload, $secret, true));
-
-        if ($signature != $calculated_hmac) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+    return hash_equals($calculated_hmac, $signature);
+}
 }
