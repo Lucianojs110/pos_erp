@@ -66,6 +66,7 @@ class WoocommerceWebhookController extends Controller
                 ];
 
                 $order_data = json_decode($payload);
+                \Log::debug('Woo payload:', (array) $order_data);  
 
                 DB::beginTransaction();
                 $created = $this->woocommerceUtil->createNewSaleFromOrder($business_id, $user_id, $order_data, $business_data);
